@@ -13,3 +13,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.content {
+  height: 90%;
+  width: 90%;
+  max-height: 35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

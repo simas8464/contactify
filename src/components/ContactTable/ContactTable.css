@@ -12,11 +12,16 @@
   border-bottom: 0px;
 }
 
+.contact-table th.contact-details-column {
+  width: 25rem;
+}
+
 .contact-table {
-  width: 90%;
-  height: 90%;
-  max-height: 35rem;
+  width: 100%;
+  height: 100%;
   background-color: #D7E0E4;
   border: 0px;
   border-spacing: 0px;
+  padding: 0px;
+  border-collapse: collapse;
 }
