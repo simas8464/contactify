@@ -11,5 +11,9 @@ export default function App(): JSX.Element {
     fetchContacts().then((newContacts) => setContacts(newContacts));
   }, []);
 
-  return <ContactTable contacts={contacts} />;
+  return (
+    <div className='app'>
+      <ContactTable contacts={contacts} />
+    </div>
+  );
 }

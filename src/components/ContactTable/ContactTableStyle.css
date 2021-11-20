@@ -1,5 +1,6 @@
 .contact-table th {
   background-color: #4DB6BD;
+  color: white;
 }
 
 .contact-table td {
@@ -12,11 +13,10 @@
 }
 
 .contact-table {
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
+  max-height: 35rem;
   background-color: #D7E0E4;
-  padding-top: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
+  border: 0px;
   border-spacing: 0px;
 }

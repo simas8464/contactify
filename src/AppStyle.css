@@ -1,4 +1,4 @@
-body, html {
+body, html, #root, .app {
   height: 100%;
   width: 100%;
   margin: 0px;
@@ -6,4 +6,10 @@ body, html {
 
 body {
   background-image: linear-gradient(to right, #1C6AB7, #1081C0);
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
