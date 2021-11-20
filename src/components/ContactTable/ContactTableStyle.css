@@ -1,0 +1,22 @@
+.contact-table th {
+  background-color: #4DB6BD;
+}
+
+.contact-table td {
+  background-color: #FEFEFE;
+  border-bottom: thin solid #D7E0E4;
+}
+
+.contact-table tr:last-child td {
+  border-bottom: 0px;
+}
+
+.contact-table {
+  width: 80%;
+  height: 80%;
+  background-color: #D7E0E4;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-spacing: 0px;
+}
