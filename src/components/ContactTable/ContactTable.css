@@ -32,6 +32,18 @@
   width: 20rem;
 }
 
+.contact-table .contact-table-row .contact-table-cell {
+  text-align: left;
+}
+
+.contact-table .contact-table-row .contact-table-cell:first-child > button > p {
+  text-indent: 1.5rem;
+}
+
+.contact-table .contact-table-row .contact-table-cell:nth-child(5) {
+  text-align: right;
+}
+
 .contact-table {
   width: 100%;
   border: 0px;
