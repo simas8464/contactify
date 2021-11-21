@@ -12,23 +12,27 @@ export default function ContactDetails({
 }: ContactDetailsProps): JSX.Element {
   return (
     <div className='contact-details'>
-      <img className='photo' src={userpic} alt='User picture' />
-      <table className='children' cellPadding='0' cellSpacing='0'>
+      <img src={userpic} alt='User picture' />
+      <table cellPadding='0' cellSpacing='0'>
         <tr>
           <th>Name:</th>
-          <tr>{name}</tr>
+          <td>{name}</td>
         </tr>
         <tr>
           <th>City:</th>
-          <tr>{city}</tr>
+          <td>{city}</td>
         </tr>
         <tr>
           <th>Email:</th>
-          <tr>{email}</tr>
+          <td>
+            <address>
+              <a href={`mailto: ${email}`}>{email}</a>
+            </address>
+          </td>
         </tr>
         <tr>
           <th>Phone:</th>
-          <tr>{phone}</tr>
+          <td>{phone}</td>
         </tr>
       </table>
     </div>

@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.contact-details .photo {
+.contact-details > img {
   max-height: 100%;
   max-width: calc(100% - var(--margin) * 2);
   border-radius: 50%;
@@ -25,4 +25,12 @@
   margin-left: var(--margin);
   margin-right: var(--margin);
   margin-bottom: var(--margin);
+}
+
+.contact-details > table > tr > th {
+  font-weight: normal;
+}
+
+.contact-details > table > tr > td {
+  font-weight: 600;
 }
