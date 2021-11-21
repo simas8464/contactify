@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Contact } from '../../types/contacts';
 import ContactDetails from '../ContactDetails/ContactDetails';
 import './ContactTable.css';
@@ -10,6 +10,8 @@ export interface ContactsTableProps {
 export default function ContactTable({
   contacts,
 }: ContactsTableProps): JSX.Element {
+  const [selectedContact, setSelectedContact] = useState<number | null>(null);
+
   return (
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
       <thead>
@@ -24,20 +26,38 @@ export default function ContactTable({
       </thead>
       <tbody>
         {contacts.map(
-          ({ id, name, city, isActive, email, phone }, index, { length }) => (
-            <tr id={id}>
-              <td>{name}</td>
-              <td>{city}</td>
-              <td>{Boolean(isActive).toString()}</td>
-              <td>{email}</td>
-              <td>{phone}</td>
-              {index === 0 ? (
-                <td rowSpan={length}>
-                  <ContactDetails />
+          ({ id, name, city, isActive, email, phone }, index, { length }) => {
+            const onMouseClick = () => setSelectedContact(index);
+            const backgroundStyle =
+              selectedContact === index
+                ? { backgroundColor: 'var(--grey)' }
+                : undefined;
+
+            return (
+              <tr id={id}>
+                <td onClick={onMouseClick} style={backgroundStyle}>
+                  {name}
                 </td>
-              ) : null}
-            </tr>
-          )
+                <td onClick={onMouseClick} style={backgroundStyle}>
+                  {city}
+                </td>
+                <td onClick={onMouseClick} style={backgroundStyle}>
+                  {Boolean(isActive).toString()}
+                </td>
+                <td onClick={onMouseClick} style={backgroundStyle}>
+                  {email}
+                </td>
+                <td onClick={onMouseClick} style={backgroundStyle}>
+                  {phone}
+                </td>
+                {index === 0 ? (
+                  <td rowSpan={length}>
+                    <ContactDetails />
+                  </td>
+                ) : null}
+              </tr>
+            );
+          }
         )}
       </tbody>
     </table>

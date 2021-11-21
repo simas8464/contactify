@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import fetchContacts from './fetchContacts';
 import { Contact } from './types/contacts';
 import ContactTable from './components/ContactTable/ContactTable';
-import ContactDetails from './components/ContactDetails/ContactDetails';
 import './App.css';
 import './colors.css';
 
