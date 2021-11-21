@@ -4,6 +4,7 @@ import { Contact } from './types/contacts';
 import ContactTable from './components/ContactTable/ContactTable';
 import ContactDetails from './components/ContactDetails/ContactDetails';
 import './App.css';
+import './colors.css';
 
 export default function App(): JSX.Element {
   const [contacts, setContacts] = useState<Contact[]>([]);
