@@ -12,30 +12,34 @@ export default function ContactTable({
 }: ContactsTableProps): JSX.Element {
   return (
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
-      <tr>
-        <th>Name</th>
-        <th>City</th>
-        <th></th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th className='contact-details-column'></th>
-      </tr>
-      {contacts.map(
-        ({ id, name, city, isActive, email, phone }, index, { length }) => (
-          <tr id={id}>
-            <td>{name}</td>
-            <td>{city}</td>
-            <td>{Boolean(isActive).toString()}</td>
-            <td>{email}</td>
-            <td>{phone}</td>
-            {index === 0 ? (
-              <td rowSpan={length}>
-                <ContactDetails />
-              </td>
-            ) : null}
-          </tr>
-        )
-      )}
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th></th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th className='contact-details-column'></th>
+        </tr>
+      </thead>
+      <tbody>
+        {contacts.map(
+          ({ id, name, city, isActive, email, phone }, index, { length }) => (
+            <tr id={id}>
+              <td>{name}</td>
+              <td>{city}</td>
+              <td>{Boolean(isActive).toString()}</td>
+              <td>{email}</td>
+              <td>{phone}</td>
+              {index === 0 ? (
+                <td rowSpan={length}>
+                  <ContactDetails />
+                </td>
+              ) : null}
+            </tr>
+          )
+        )}
+      </tbody>
     </table>
   );
 }

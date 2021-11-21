@@ -1,7 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body, html, #root, .app {
   height: 100%;
   width: 100%;
-  margin: 0px;
 }
 
 body {
@@ -10,14 +14,15 @@ body {
 
 .app {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .content {
-  height: 90%;
-  width: 90%;
-  max-height: 35rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 4rem 4rem 0 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
