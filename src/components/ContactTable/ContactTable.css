@@ -6,6 +6,23 @@
   background-color: var(--teal);
 }
 
+.contact-table .contact-table-header:nth-last-child(2) {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.contact-table .contact-table-header:nth-last-child(2) > button {
+  background-color: var(--teal);
+  height: 100%;
+  width: 2rem;
+}
+
+.contact-table .list-icon-white > path {
+  color: var(--white);
+}
+
 .contact-table .contact-table-header > button > p {
   background-color: var(--teal);
   color: var(--white);
@@ -22,7 +39,7 @@
   background-color: var(--white);
 }
 
-.contact-table .contact-table-row:not(:last-child):not(:first-child) {
+.contact-table .contact-table-row:not(:last-child) {
   border-bottom: thin solid var(--grey);
 }
 

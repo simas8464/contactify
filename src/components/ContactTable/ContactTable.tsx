@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Contact, SortableContactProperty } from '../../types/contacts';
 import ContactDetails from '../ContactDetails/ContactDetails';
@@ -51,7 +51,11 @@ export default function ContactTable({
               <p>Phone</p>
             </button>
           </th>
-          <th className='contact-table-cell contact-table-header' />
+          <th className='contact-table-cell contact-table-header'>
+            <button>
+              <FontAwesomeIcon className='list-icon-white' icon={faList} />
+            </button>
+          </th>
           <th className='contact-table-cell contact-table-header contact-details-column' />
         </tr>
       </thead>
@@ -100,7 +104,9 @@ export default function ContactTable({
                 </button>
               </td>
               <td className='contact-table-cell contact-table-data'>
-                <button onClick={onMouseClick} style={backgroundStyle} />
+                <button onClick={onMouseClick} style={backgroundStyle}>
+                  <div />
+                </button>
               </td>
               {index === 0 ? (
                 <td
