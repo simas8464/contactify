@@ -27,10 +27,11 @@
   margin-bottom: var(--margin);
 }
 
-.contact-details > table > tr > th {
-  font-weight: normal;
+.contact-details > table > tbody > tr > td > p {
+  color: black;
 }
 
-.contact-details > table > tr > td {
-  font-weight: 600;
+.contact-details > table > tbody > tr > td > address > a {
+  color: var(--email);
+  font-style: normal;
 }

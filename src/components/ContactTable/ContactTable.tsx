@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Contact, SortableContactProperty } from '../../types/contacts';
 import ContactDetails from '../ContactDetails/ContactDetails';
 import './ContactTable.css';
@@ -71,7 +73,7 @@ export default function ContactTable({
               : undefined;
 
           return (
-            <tr className='contact-table-row' id={id}>
+            <tr className='contact-table-row' id={id} key={id}>
               <td className='contact-table-cell contact-table-data'>
                 <button onClick={onMouseClick} style={backgroundStyle}>
                   <p>{name}</p>
@@ -84,7 +86,7 @@ export default function ContactTable({
               </td>
               <td className='contact-table-cell contact-table-data'>
                 <button onClick={onMouseClick} style={backgroundStyle}>
-                  {Boolean(isActive).toString()}
+                  <FontAwesomeIcon icon={isActive ? faEye : faEyeSlash} />
                 </button>
               </td>
               <td className='contact-table-cell contact-table-data'>

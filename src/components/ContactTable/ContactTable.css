@@ -3,12 +3,11 @@
 }
 
 .contact-table .contact-table-header {
-  background-color: #4db6bd;
-  color: var(--white);
+  background-color: var(--teal);
 }
 
-.contact-table .contact-table-header > button {
-  background-color: #4db6bd;
+.contact-table .contact-table-header > button > p {
+  background-color: var(--teal);
   color: var(--white);
   height: 100%;
   width: 100%;
