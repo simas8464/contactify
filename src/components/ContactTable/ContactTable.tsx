@@ -11,7 +11,9 @@ export default function ContactTable({
   contacts,
 }: ContactsTableProps): JSX.Element {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [sortColumn, setSortColumn] = useState<SortableContactProperty | null>(null);
+  const [sortColumn, setSortColumn] = useState<SortableContactProperty | null>(
+    null
+  );
   const [sortAscending, setSortAscending] = useState<boolean>(true);
 
   function setSortingState(columnName: SortableContactProperty): void {
@@ -26,30 +28,26 @@ export default function ContactTable({
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
       <thead>
         <tr className='contact-table-row'>
-          <th
-            className='contact-table-cell contact-table-header'
-            onClick={() => setSortingState('name')}
-          >
-            <p>Name</p>
+          <th className='contact-table-cell contact-table-header'>
+            <button onClick={() => setSortingState('name')}>
+              <p>Name</p>
+            </button>
           </th>
-          <th
-            className='contact-table-cell contact-table-header'
-            onClick={() => setSortingState('city')}
-          >
-            <p>City</p>
+          <th className='contact-table-cell contact-table-header'>
+            <button onClick={() => setSortingState('city')}>
+              <p>City</p>
+            </button>
           </th>
           <th className='contact-table-cell contact-table-header' />
-          <th
-            className='contact-table-cell contact-table-header'
-            onClick={() => setSortingState('email')}
-          >
-            <p>Email</p>
+          <th className='contact-table-cell contact-table-header'>
+            <button onClick={() => setSortingState('email')}>
+              <p>Email</p>
+            </button>
           </th>
-          <th
-            className='contact-table-cell contact-table-header'
-            onClick={() => setSortingState('phone')}
-          >
-            <p>Phone</p>
+          <th className='contact-table-cell contact-table-header'>
+            <button onClick={() => setSortingState('phone')}>
+              <p>Phone</p>
+            </button>
           </th>
           <th className='contact-table-cell contact-table-header' />
           <th className='contact-table-cell contact-table-header contact-details-column' />
@@ -60,9 +58,8 @@ export default function ContactTable({
           ? contacts.sort((a, b) => {
               if (sortAscending) {
                 return a[sortColumn].localeCompare(b[sortColumn]);
-              } else {
-                return b[sortColumn].localeCompare(a[sortColumn]);
               }
+              return b[sortColumn].localeCompare(a[sortColumn]);
             })
           : contacts
         ).map((contact, index, { length }) => {
@@ -75,46 +72,34 @@ export default function ContactTable({
 
           return (
             <tr className='contact-table-row' id={id}>
-              <td
-                className='contact-table-cell contact-table-data'
-                onClick={onMouseClick}
-                style={backgroundStyle}
-              >
-                <p>{name}</p>
+              <td className='contact-table-cell contact-table-data'>
+                <button onClick={onMouseClick} style={backgroundStyle}>
+                  <p>{name}</p>
+                </button>
               </td>
-              <td
-                className='contact-table-cell contact-table-data'
-                onClick={onMouseClick}
-                style={backgroundStyle}
-              >
-                <p>{city}</p>
+              <td className='contact-table-cell contact-table-data'>
+                <button onClick={onMouseClick} style={backgroundStyle}>
+                  <p>{city}</p>
+                </button>
               </td>
-              <td
-                className='contact-table-cell contact-table-data'
-                onClick={onMouseClick}
-                style={backgroundStyle}
-              >
-                {Boolean(isActive).toString()}
+              <td className='contact-table-cell contact-table-data'>
+                <button onClick={onMouseClick} style={backgroundStyle}>
+                  {Boolean(isActive).toString()}
+                </button>
               </td>
-              <td
-                className='contact-table-cell contact-table-data'
-                onClick={onMouseClick}
-                style={backgroundStyle}
-              >
-                <p>{email}</p>
+              <td className='contact-table-cell contact-table-data'>
+                <button onClick={onMouseClick} style={backgroundStyle}>
+                  <p>{email}</p>
+                </button>
               </td>
-              <td
-                className='contact-table-cell contact-table-data'
-                onClick={onMouseClick}
-                style={backgroundStyle}
-              >
-                <p>{phone}</p>
+              <td className='contact-table-cell contact-table-data'>
+                <button onClick={onMouseClick} style={backgroundStyle}>
+                  <p>{phone}</p>
+                </button>
               </td>
-              <td
-                className='contact-table-cell contact-table-data'
-                onClick={onMouseClick}
-                style={backgroundStyle}
-              />
+              <td className='contact-table-cell contact-table-data'>
+                <button onClick={onMouseClick} style={backgroundStyle} />
+              </td>
               {index === 0 ? (
                 <td
                   className='contact-table-contact-details-row'

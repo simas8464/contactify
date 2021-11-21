@@ -4,13 +4,27 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-body, html, #root, .app {
+input,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  font: inherit;
+  font-weight: inherit;
+  border: 0;
+  padding: 0;
+}
+
+body,
+html,
+#root,
+.app {
   height: 100%;
   width: 100%;
 }
 
 body {
-  background-image: linear-gradient(to right, #1C6AB7, #1081C0);
+  background-image: linear-gradient(to right, #1c6ab7, #1081c0);
 }
 
 .app {

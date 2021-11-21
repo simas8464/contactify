@@ -7,6 +7,18 @@
   color: var(--white);
 }
 
+.contact-table .contact-table-header > button {
+  background-color: #4db6bd;
+  color: var(--white);
+  height: 100%;
+  width: 100%;
+}
+
+.contact-table .contact-table-data > button {
+  height: 100%;
+  width: 100%;
+}
+
 .contact-table .contact-table-data {
   background-color: var(--white);
 }
