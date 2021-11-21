@@ -7,3 +7,5 @@ export interface Contact {
   phone: string;
   isActive: boolean;
 }
+
+export type SortableContactProperty = keyof Omit<Contact, 'isActive'>;
