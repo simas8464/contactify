@@ -18,10 +18,11 @@ export default function ContactTable({
         <tr>
           <th>Name</th>
           <th>City</th>
-          <th></th>
+          <th />
           <th>Email</th>
           <th>Phone</th>
-          <th className='contact-details-column'></th>
+          <th />
+          <th className='contact-details-column' />
         </tr>
       </thead>
       <tbody>
@@ -50,6 +51,7 @@ export default function ContactTable({
                 <td onClick={onMouseClick} style={backgroundStyle}>
                   {phone}
                 </td>
+                <td onClick={onMouseClick} style={backgroundStyle} />
                 {index === 0 ? (
                   <td rowSpan={length}>
                     <ContactDetails />
