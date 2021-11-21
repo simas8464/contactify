@@ -1,5 +1,22 @@
 .contact-details {
+  --padding: 1.5rem;
   width: 100%;
-  height: 100%;
-  background-color: var(--grey);
+  height: calc(100% - var(--padding) * 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contact-details:first-child {
+  padding-top: var(--padding);
+}
+
+.contact-details .children {
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
+.contact-details:last-child {
+  padding-bottom: var(--padding);
 }

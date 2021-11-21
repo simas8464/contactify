@@ -1,4 +1,5 @@
-.contact-table th, td {
+.contact-table th,
+td {
   height: 3rem;
 }
 
@@ -13,6 +14,10 @@
 
 .contact-table tr:not(:last-child):not(:first-child) {
   border-bottom: thin solid var(--grey);
+}
+
+.contact-table td:last-child {
+  background-color: var(--grey);
 }
 
 .contact-table th.contact-details-column {

@@ -54,7 +54,13 @@ export default function ContactTable({
                 <td onClick={onMouseClick} style={backgroundStyle} />
                 {index === 0 ? (
                   <td rowSpan={length}>
-                    <ContactDetails />
+                    <ContactDetails
+                      selectedContact={
+                        selectedContact !== null
+                          ? contacts[selectedContact]
+                          : null
+                      }
+                    />
                   </td>
                 ) : null}
               </tr>
