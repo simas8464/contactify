@@ -16,11 +16,19 @@ export default function ContactTable({
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
       <thead>
         <tr className='contact-table-row'>
-          <th className='contact-table-cell contact-table-header'>Name</th>
-          <th className='contact-table-cell contact-table-header'>City</th>
+          <th className='contact-table-cell contact-table-header'>
+            <p>Name</p>
+          </th>
+          <th className='contact-table-cell contact-table-header'>
+            <p>City</p>
+          </th>
           <th className='contact-table-cell contact-table-header' />
-          <th className='contact-table-cell contact-table-header'>Email</th>
-          <th className='contact-table-cell contact-table-header'>Phone</th>
+          <th className='contact-table-cell contact-table-header'>
+            <p>Email</p>
+          </th>
+          <th className='contact-table-cell contact-table-header'>
+            <p>Phone</p>
+          </th>
           <th className='contact-table-cell contact-table-header' />
           <th className='contact-table-cell contact-table-header contact-details-column' />
         </tr>
@@ -41,14 +49,14 @@ export default function ContactTable({
                   onClick={onMouseClick}
                   style={backgroundStyle}
                 >
-                  {name}
+                  <p>{name}</p>
                 </td>
                 <td
                   className='contact-table-cell contact-table-data'
                   onClick={onMouseClick}
                   style={backgroundStyle}
                 >
-                  {city}
+                  <p>{city}</p>
                 </td>
                 <td
                   className='contact-table-cell contact-table-data'
@@ -62,14 +70,14 @@ export default function ContactTable({
                   onClick={onMouseClick}
                   style={backgroundStyle}
                 >
-                  {email}
+                  <p>{email}</p>
                 </td>
                 <td
                   className='contact-table-cell contact-table-data'
                   onClick={onMouseClick}
                   style={backgroundStyle}
                 >
-                  {phone}
+                  <p>{phone}</p>
                 </td>
                 <td
                   className='contact-table-cell contact-table-data'
@@ -77,7 +85,10 @@ export default function ContactTable({
                   style={backgroundStyle}
                 />
                 {index === 0 ? (
-                  <td className='contact-table-contact-details-row' rowSpan={length}>
+                  <td
+                    className='contact-table-contact-details-row'
+                    rowSpan={length}
+                  >
                     {selectedContact !== null ? (
                       <ContactDetails
                         selectedContact={contacts[selectedContact]}

@@ -16,23 +16,31 @@ export default function ContactDetails({
       <table cellPadding='0' cellSpacing='0'>
         <tr>
           <th>Name:</th>
-          <td>{name}</td>
+          <td>
+            <p>{name}</p>
+          </td>
         </tr>
         <tr>
           <th>City:</th>
-          <td>{city}</td>
+          <td>
+            <p>{city}</p>
+          </td>
         </tr>
         <tr>
           <th>Email:</th>
           <td>
-            <address>
-              <a href={`mailto: ${email}`}>{email}</a>
-            </address>
+            <p>
+              <address>
+                <a href={`mailto: ${email}`}>{email}</a>
+              </address>
+            </p>
           </td>
         </tr>
         <tr>
           <th>Phone:</th>
-          <td>{phone}</td>
+          <td>
+            <p>{phone}</p>
+          </td>
         </tr>
       </table>
     </div>
