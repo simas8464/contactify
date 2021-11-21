@@ -17,19 +17,19 @@ export default function ContactDetails({
         <tbody>
           <tr>
             <th>Name:</th>
-            <td className='contact-details-data'>
+            <td>
               <p>{name}</p>
             </td>
           </tr>
           <tr>
             <th>City:</th>
-            <td className='contact-details-data'>
+            <td>
               <p>{city}</p>
             </td>
           </tr>
           <tr>
             <th>Email:</th>
-            <td className='contact-details-data'>
+            <td>
               <address>
                 <a href={`mailto: ${email}`}>{email}</a>
               </address>
@@ -37,7 +37,7 @@ export default function ContactDetails({
           </tr>
           <tr>
             <th>Phone:</th>
-            <td className='contact-details-data'>
+            <td>
               <p>{phone}</p>
             </td>
           </tr>
