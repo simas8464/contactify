@@ -15,14 +15,14 @@ export default function ContactTable({
   return (
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
       <thead>
-        <tr>
-          <th>Name</th>
-          <th>City</th>
-          <th />
-          <th>Email</th>
-          <th>Phone</th>
-          <th />
-          <th className='contact-details-column' />
+        <tr className='contact-table-row'>
+          <th className='contact-table-cell contact-table-header'>Name</th>
+          <th className='contact-table-cell contact-table-header'>City</th>
+          <th className='contact-table-cell contact-table-header' />
+          <th className='contact-table-cell contact-table-header'>Email</th>
+          <th className='contact-table-cell contact-table-header'>Phone</th>
+          <th className='contact-table-cell contact-table-header' />
+          <th className='contact-table-cell contact-table-header contact-details-column' />
         </tr>
       </thead>
       <tbody>
@@ -35,32 +35,54 @@ export default function ContactTable({
                 : undefined;
 
             return (
-              <tr id={id}>
-                <td onClick={onMouseClick} style={backgroundStyle}>
+              <tr className='contact-table-row' id={id}>
+                <td
+                  className='contact-table-cell contact-table-data'
+                  onClick={onMouseClick}
+                  style={backgroundStyle}
+                >
                   {name}
                 </td>
-                <td onClick={onMouseClick} style={backgroundStyle}>
+                <td
+                  className='contact-table-cell contact-table-data'
+                  onClick={onMouseClick}
+                  style={backgroundStyle}
+                >
                   {city}
                 </td>
-                <td onClick={onMouseClick} style={backgroundStyle}>
+                <td
+                  className='contact-table-cell contact-table-data'
+                  onClick={onMouseClick}
+                  style={backgroundStyle}
+                >
                   {Boolean(isActive).toString()}
                 </td>
-                <td onClick={onMouseClick} style={backgroundStyle}>
+                <td
+                  className='contact-table-cell contact-table-data'
+                  onClick={onMouseClick}
+                  style={backgroundStyle}
+                >
                   {email}
                 </td>
-                <td onClick={onMouseClick} style={backgroundStyle}>
+                <td
+                  className='contact-table-cell contact-table-data'
+                  onClick={onMouseClick}
+                  style={backgroundStyle}
+                >
                   {phone}
                 </td>
-                <td onClick={onMouseClick} style={backgroundStyle} />
+                <td
+                  className='contact-table-cell contact-table-data'
+                  onClick={onMouseClick}
+                  style={backgroundStyle}
+                />
                 {index === 0 ? (
-                  <td rowSpan={length}>
-                    <ContactDetails
-                      selectedContact={
-                        selectedContact !== null
-                          ? contacts[selectedContact]
-                          : null
-                      }
-                    />
+                  <td className='contact-table-contact-details-row' rowSpan={length}>
+                    {selectedContact !== null ? (
+                      <ContactDetails
+                        selectedContact={contacts[selectedContact]}
+                      />
+                    ) : null}
                   </td>
                 ) : null}
               </tr>

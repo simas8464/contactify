@@ -1,27 +1,23 @@
-.contact-table th,
-td {
+.contact-table .contact-table-cell {
   height: 3rem;
 }
 
-.contact-table th {
+.contact-table .contact-table-header {
   background-color: #4db6bd;
   color: var(--white);
 }
 
-.contact-table td {
+.contact-table .contact-table-data {
   background-color: var(--white);
 }
 
-.contact-table tr:not(:last-child):not(:first-child) {
+.contact-table .contact-table-row:not(:last-child):not(:first-child) {
   border-bottom: thin solid var(--grey);
 }
 
-.contact-table td:last-child {
+.contact-table .contact-table-contact-details-row {
   background-color: var(--grey);
-}
-
-.contact-table th.contact-details-column {
-  width: 25rem;
+  width: 20rem;
 }
 
 .contact-table {

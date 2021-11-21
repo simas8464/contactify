@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.contact-details .photo {
+  max-height: 100%;
+  max-width: calc(100% - var(--padding) * 2);
+}
+
 .contact-details:first-child {
   padding-top: var(--padding);
 }
