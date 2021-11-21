@@ -1,7 +1,7 @@
 .contact-details {
-  --padding: 1.5rem;
+  --margin: 1.5rem;
   width: 100%;
-  height: calc(100% - var(--padding) * 2);
+  height: calc(100% - var(--margin) * 2);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -10,18 +10,19 @@
 
 .contact-details .photo {
   max-height: 100%;
-  max-width: calc(100% - var(--padding) * 2);
+  max-width: calc(100% - var(--margin) * 2);
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.5rem;
+  border-color: var(--white);
 }
 
 .contact-details:first-child {
-  padding-top: var(--padding);
+  margin-top: var(--margin);
 }
 
-.contact-details .children {
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-}
-
-.contact-details:last-child {
-  padding-bottom: var(--padding);
+.contact-details > * {
+  margin-left: var(--margin);
+  margin-right: var(--margin);
+  margin-bottom: var(--margin);
 }

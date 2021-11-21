@@ -12,7 +12,7 @@ export default function ContactDetails({
 }: ContactDetailsProps): JSX.Element {
   return (
     <div className='contact-details'>
-      <img className='children photo' src={userpic} alt='User picture' />
+      <img className='photo' src={userpic} alt='User picture' />
       <table className='children' cellPadding='0' cellSpacing='0'>
         <tr>
           <th>Name:</th>
