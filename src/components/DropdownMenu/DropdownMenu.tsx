@@ -56,21 +56,14 @@ export default function DropdownMenu({
     return () => document.removeEventListener('mousedown', handleClick);
   }, [wrapperRef, menuIconRef, showMenu, setShowMenu]);
 
-  const style: React.CSSProperties = {
-    visibility: showMenu ? 'visible' : 'hidden',
-  };
-
-  if (menuIconRef.current !== null) {
-    const { bottom: menuIconBottom } =
-      menuIconRef.current.getBoundingClientRect();
-    style.top = menuIconBottom;
-  }
-
   return (
     <table
       ref={wrapperRef}
       className='dropdown-menu'
-      style={style}
+      style={{
+        display: showMenu ? 'block' : 'none',
+        top: menuIconRef.current?.getBoundingClientRect().bottom,
+      }}
       cellPadding='0'
       cellSpacing='0'
     >
