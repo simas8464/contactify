@@ -9,7 +9,21 @@ export default function App(): JSX.Element {
   const [contacts, setContacts] = useState<Contact[]>([]);
 
   useEffect(() => {
-    fetchContacts().then((newContacts) => setContacts(newContacts));
+    fetchContacts()
+      .then((newContacts) => setContacts(newContacts))
+      .catch((reason) => {
+        let message: string | undefined;
+        if (reason instanceof Error) {
+          message = reason.message;
+        } else if (typeof reason === 'string') {
+          message = reason;
+        }
+        console.error(
+          `Could not fetch contacts${
+            message !== undefined ? `: ${message}` : ''
+          }.`
+        );
+      });
   }, []);
 
   return (
