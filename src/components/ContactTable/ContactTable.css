@@ -8,7 +8,7 @@
 
 .contact-table .contact-table-header:nth-last-child(2) {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   padding-left: 1rem;
 }
@@ -21,6 +21,10 @@
 
 .contact-table .list-icon-white > path {
   color: var(--white);
+}
+
+.contact-table .list-icon-teal > path {
+  color: var(--teal);
 }
 
 .contact-table .contact-table-header > button > p {
@@ -66,4 +70,9 @@
   border-spacing: 0px;
   padding: 0px;
   border-collapse: collapse;
+}
+
+.contact-table .menu-cell {
+  position: relative;
+  display: inline-block;
 }

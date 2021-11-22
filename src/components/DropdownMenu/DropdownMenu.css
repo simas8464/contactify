@@ -1,0 +1,45 @@
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  overflow: auto;
+  z-index: 1;
+  background-color: var(--white);
+  border-collapse: collapse;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-spacing: 0;
+  --rowHeight: 2rem;
+}
+
+.dropdown-menu > tbody > tr {
+  height: var(--rowHeight);
+}
+
+.dropdown-menu > tbody > tr > td {
+  min-width: var(--rowHeight);
+}
+
+.dropdown-menu > tbody > tr:not(:last-child) {
+  border-bottom: thin solid var(--grey);
+}
+
+.dropdown-menu > tbody > tr > td:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--rowHeight);
+}
+
+.dropdown-menu > tbody > tr > td:first-child > button > svg {
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.dropdown-menu > tbody > tr > td:first-child > button > svg > path {
+  color: var(--teal);
+}
+
+.dropdown-menu > tbody > tr > td:last-child {
+  min-width: 8rem;
+}

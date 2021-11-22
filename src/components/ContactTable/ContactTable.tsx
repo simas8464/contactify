@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { faEye, faEyeSlash, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Contact, SortableContactProperty } from '../../types/contacts';
 import ContactDetails from '../ContactDetails/ContactDetails';
 import './ContactTable.css';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 export interface ContactsTableProps {
   contacts: Contact[];
@@ -17,6 +18,12 @@ export default function ContactTable({
     null
   );
   const [sortAscending, setSortAscending] = useState<boolean>(true);
+  const [showName, setShowName] = useState<boolean>(true);
+  const [showCity, setshowCity] = useState<boolean>(true);
+  const [showEmail, setShowEmail] = useState<boolean>(true);
+  const [showPhone, setShowPhone] = useState<boolean>(true);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const menuIconRef = useRef<HTMLButtonElement>(null);
 
   function setSortingState(columnName: SortableContactProperty): void {
     if (sortColumn !== columnName) {
@@ -51,10 +58,32 @@ export default function ContactTable({
               <p>Phone</p>
             </button>
           </th>
-          <th className='contact-table-cell contact-table-header'>
-            <button>
+          <th className='contact-table-cell contact-table-header table cell'>
+            <button
+              ref={menuIconRef}
+              onClick={() => {
+                if (!showMenu) {
+                  setShowMenu(true);
+                } else {
+                  setShowMenu(false);
+                }
+              }}
+            >
               <FontAwesomeIcon className='list-icon-white' icon={faList} />
             </button>
+            <DropdownMenu
+              showCity={showCity}
+              showEmail={showEmail}
+              showName={showName}
+              showPhone={showPhone}
+              showMenu={showMenu}
+              setshowCity={setshowCity}
+              setShowEmail={setShowEmail}
+              setShowName={setShowName}
+              setShowPhone={setShowPhone}
+              setShowMenu={setShowMenu}
+              menuIconRef={menuIconRef}
+            />
           </th>
           <th className='contact-table-cell contact-table-header contact-details-column' />
         </tr>

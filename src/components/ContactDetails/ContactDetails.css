@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.contact-details > table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
 .contact-details > img {
   max-height: 100%;
   max-width: calc(100% - var(--margin) * 2);
