@@ -5,9 +5,18 @@ import { Contact, SortableContactProperty } from '../../types/contacts';
 import ContactDetails from '../ContactDetails/ContactDetails';
 import './ContactTable.css';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import classNames from 'classnames';
 
 export interface ContactsTableProps {
   contacts: Contact[];
+}
+
+enum Columns {
+  Name = 'Name',
+  City = 'City',
+  Visible = 'Visible',
+  Email = 'Email',
+  Phone = 'Phone',
 }
 
 export default function ContactTable({
@@ -33,29 +42,82 @@ export default function ContactTable({
     }
   }
 
+  let firstColumn: Columns;
+  if (showName) {
+    firstColumn = Columns.Name;
+  } else if (showCity) {
+    firstColumn = Columns.City;
+  } else {
+    firstColumn = Columns.Visible;
+  }
+
+  let lastColumn: Columns;
+  if (showPhone) {
+    lastColumn = Columns.Phone;
+  } else if (showEmail) {
+    lastColumn = Columns.Email;
+  } else {
+    lastColumn = Columns.Visible;
+  }
+
   return (
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
       <thead>
         <tr className='contact-table-row'>
-          <th className='contact-table-cell contact-table-header'>
+          <th
+            className={classNames(
+              'contact-table-cell',
+              'contact-table-header',
+              { 'first-column': firstColumn === Columns.Name }
+            )}
+            style={{ display: showName ? undefined : 'none' }}
+          >
             <button onClick={() => setSortingState('name')}>
-              <p>Name</p>
+              <p>{Columns.Name}</p>
             </button>
           </th>
-          <th className='contact-table-cell contact-table-header'>
+          <th
+            className={classNames(
+              'contact-table-cell',
+              'contact-table-header',
+              { 'first-column': firstColumn === Columns.City }
+            )}
+            style={{ display: showCity ? undefined : 'none' }}
+          >
             <button onClick={() => setSortingState('city')}>
-              <p>City</p>
+              <p>{Columns.City}</p>
             </button>
           </th>
-          <th className='contact-table-cell contact-table-header' />
-          <th className='contact-table-cell contact-table-header'>
+          <th
+            className={classNames(
+              'contact-table-cell',
+              'contact-table-header',
+              { 'first-column': firstColumn === Columns.Visible },
+              { 'last-column': lastColumn === Columns.Visible }
+            )}
+          />
+          <th
+            className={classNames(
+              'contact-table-cell',
+              'contact-table-header',
+              { 'last-column': lastColumn === Columns.Email }
+            )}
+            style={{ display: showEmail ? undefined : 'none' }}
+          >
             <button onClick={() => setSortingState('email')}>
-              <p>Email</p>
+              <p>{Columns.Email}</p>
             </button>
           </th>
-          <th className='contact-table-cell contact-table-header'>
+          <th
+            className={classNames(
+              'contact-table-cell',
+              'contact-table-header',
+              { 'last-column': lastColumn === Columns.Phone }
+            )}
+            style={{ display: showPhone ? undefined : 'none' }}
+          >
             <button onClick={() => setSortingState('phone')}>
-              <p>Phone</p>
+              <p>{Columns.Phone}</p>
             </button>
           </th>
           <th className='contact-table-cell contact-table-header table cell'>
@@ -107,27 +169,65 @@ export default function ContactTable({
 
           return (
             <tr className='contact-table-row' id={id} key={id}>
-              <td className='contact-table-cell contact-table-data'>
+              <td
+                className={classNames(
+                  'contact-table-cell',
+                  'contact-table-data',
+                  { 'first-column': firstColumn === Columns.Name }
+                )}
+                style={{ display: showName ? undefined : 'none' }}
+              >
                 <button onClick={onMouseClick} style={backgroundStyle}>
                   <p>{name}</p>
                 </button>
               </td>
-              <td className='contact-table-cell contact-table-data'>
+              <td
+                className={classNames(
+                  'contact-table-cell',
+                  'contact-table-data',
+                  { 'first-column': firstColumn === Columns.City }
+                )}
+                style={{ display: showCity ? undefined : 'none' }}
+              >
                 <button onClick={onMouseClick} style={backgroundStyle}>
                   <p>{city}</p>
                 </button>
               </td>
-              <td className='contact-table-cell contact-table-data'>
+              <td
+                className={classNames(
+                  'contact-table-cell',
+                  'contact-table-data',
+                  { 'first-column': firstColumn === Columns.Visible },
+                  { 'last-column': lastColumn === Columns.Visible }
+                )}
+              >
                 <button onClick={onMouseClick} style={backgroundStyle}>
-                  <FontAwesomeIcon icon={isActive ? faEye : faEyeSlash} />
+                  <FontAwesomeIcon
+                    className='visible-icon'
+                    icon={isActive ? faEye : faEyeSlash}
+                  />
                 </button>
               </td>
-              <td className='contact-table-cell contact-table-data'>
+              <td
+                className={classNames(
+                  'contact-table-cell',
+                  'contact-table-data',
+                  { 'last-column': lastColumn === Columns.Email }
+                )}
+                style={{ display: showEmail ? undefined : 'none' }}
+              >
                 <button onClick={onMouseClick} style={backgroundStyle}>
                   <p>{email}</p>
                 </button>
               </td>
-              <td className='contact-table-cell contact-table-data'>
+              <td
+                className={classNames(
+                  'contact-table-cell',
+                  'contact-table-data',
+                  { 'last-column': lastColumn === Columns.Phone }
+                )}
+                style={{ display: showPhone ? undefined : 'none' }}
+              >
                 <button onClick={onMouseClick} style={backgroundStyle}>
                   <p>{phone}</p>
                 </button>
