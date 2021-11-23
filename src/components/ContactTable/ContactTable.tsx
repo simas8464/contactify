@@ -73,7 +73,7 @@ export default function ContactTable({
                 <input type='text'></input>
               </div>
               <div>
-                <p>Contactify</p>
+                <p>CONTACTIFY</p>
               </div>
             </div>
           </th>

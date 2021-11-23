@@ -119,3 +119,10 @@
 .contact-table > thead > tr:first-child > th > div > div:first-child > * {
   margin-right: 1rem;
 }
+
+.contact-table > thead > tr:first-child > th > div > div:last-child > p {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 2.5rem;
+  width: 20.5rem;
+}
