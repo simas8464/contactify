@@ -19,6 +19,8 @@ enum Columns {
   Phone = 'Phone',
 }
 
+const columnNumber = Object.keys(Columns).length + 2;
+
 export default function ContactTable({
   contacts,
 }: ContactsTableProps): JSX.Element {
@@ -63,6 +65,19 @@ export default function ContactTable({
   return (
     <table cellPadding='0' cellSpacing='0' className='contact-table'>
       <thead>
+        <tr>
+          <th colSpan={columnNumber}>
+            <div>
+              <div>
+                <input type='text'></input>
+                <input type='text'></input>
+              </div>
+              <div>
+                <p>Contactify</p>
+              </div>
+            </div>
+          </th>
+        </tr>
         <tr className='contact-table-row'>
           <th
             className={classNames(
