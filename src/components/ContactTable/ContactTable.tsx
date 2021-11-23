@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { faEye, faEyeSlash, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 import { Contact, SortableContactProperty } from '../../types/contacts';
 import ContactDetails from '../ContactDetails/ContactDetails';
-import './ContactTable.css';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
-import classNames from 'classnames';
+import './ContactTable.css';
 
 export interface ContactsTableProps {
   contacts: Contact[];
@@ -155,7 +155,13 @@ export default function ContactTable({
               menuIconRef={menuIconRef}
             />
           </th>
-          <th className='contact-table-cell contact-table-header contact-details-column' />
+          <th
+            className={classNames(
+              'contact-table-cell',
+              'contact-table-header',
+              'contact-details-column'
+            )}
+          />
         </tr>
       </thead>
       <tbody>
