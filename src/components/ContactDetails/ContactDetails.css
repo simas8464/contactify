@@ -32,6 +32,22 @@
   margin-bottom: var(--margin);
 }
 
+.contact-details > table > tbody > tr {
+  height: 2rem;
+}
+
+.contact-details > table > tbody > tr > th {
+  text-align: right;
+}
+
+.contact-details > table > tbody > tr > td {
+  text-align: left;
+}
+
+.contact-details > table > tbody > tr > td > * {
+  margin-left: 1rem;
+}
+
 .contact-details > table > tbody > tr > td > p {
   color: black;
 }
