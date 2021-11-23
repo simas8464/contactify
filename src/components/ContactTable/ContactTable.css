@@ -126,3 +126,18 @@
   font-size: 2.5rem;
   width: 20.5rem;
 }
+
+.contact-table > thead > tr:first-child > th > div > div > input {
+  background-color: transparent;
+  border-bottom: 0.1rem solid var(--white);
+  color: var(--white);
+  text-align: left;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > input::placeholder {
+  color: var(--white);
+}
+
+.contact-table > thead > tr:first-child > th > div > div > input::-webkit-calendar-picker-indicator {
+  opacity: 100;
+}

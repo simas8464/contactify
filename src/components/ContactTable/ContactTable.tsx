@@ -69,8 +69,17 @@ export default function ContactTable({
           <th colSpan={columnNumber}>
             <div>
               <div>
-                <input type='text'></input>
-                <input type='text'></input>
+                <input type='text' placeholder={Columns.Name}></input>
+                <input
+                  type='text'
+                  placeholder={Columns.City}
+                  list='cities'
+                ></input>
+                <datalist id='cities'>
+                  {contacts.map(({ city }) => (
+                    <option value={city} />
+                  ))}
+                </datalist>
               </div>
               <div>
                 <p>CONTACTIFY</p>
