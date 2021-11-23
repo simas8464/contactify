@@ -120,8 +120,9 @@ export default function ContactTable({
               <p>{Columns.Phone}</p>
             </button>
           </th>
-          <th className='contact-table-cell contact-table-header table cell'>
+          <th className='contact-table-cell contact-table-header'>
             <button
+              className='menu-button'
               ref={menuIconRef}
               onClick={() => {
                 if (!showMenu) {

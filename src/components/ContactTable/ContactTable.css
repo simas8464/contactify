@@ -26,6 +26,12 @@
   color: var(--teal);
 }
 
+.contact-table .menu-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .contact-table .contact-table-header > button > p {
   color: var(--white);
 }
