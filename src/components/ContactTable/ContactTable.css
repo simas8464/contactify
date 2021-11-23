@@ -14,7 +14,6 @@
 }
 
 .contact-table .contact-table-header:nth-last-child(2) > button {
-  background-color: var(--teal);
   height: 100%;
   width: 2rem;
 }

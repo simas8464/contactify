@@ -130,8 +130,15 @@ export default function ContactTable({
                   setShowMenu(false);
                 }
               }}
+              style={{ backgroundColor: showMenu ? 'var(--white)' : undefined }}
             >
-              <FontAwesomeIcon className='list-icon-white' icon={faList} />
+              <FontAwesomeIcon
+                className={classNames({
+                  'list-icon-teal': showMenu,
+                  'list-icon-white': !showMenu,
+                })}
+                icon={faList}
+              />
             </button>
             <DropdownMenu
               showCity={showCity}
@@ -197,8 +204,10 @@ export default function ContactTable({
                 className={classNames(
                   'contact-table-cell',
                   'contact-table-data',
-                  { 'first-column': firstColumn === Columns.Visible },
-                  { 'last-column': lastColumn === Columns.Visible }
+                  {
+                    'first-column': firstColumn === Columns.Visible,
+                    'last-column': lastColumn === Columns.Visible,
+                  }
                 )}
               >
                 <button onClick={onMouseClick} style={backgroundStyle}>
