@@ -132,6 +132,7 @@
   border-bottom: 0.1rem solid var(--white);
   color: var(--white);
   text-align: left;
+  height: 1.5rem;
 }
 
 .contact-table > thead > tr:first-child > th > div > div > input::placeholder {
@@ -140,4 +141,51 @@
 
 .contact-table > thead > tr:first-child > th > div > div > input::-webkit-calendar-picker-indicator {
   opacity: 100;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button {
+  background-color: transparent;
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > span {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > svg {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:first-child {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:last-child {
+  height: 60%;
+  width: 60%;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:first-child > path {
+  color: var(--teal);
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:last-child > path {
+  color: var(--white);
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .not-visible-span > svg {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .not-visible-span > svg:first-child > path {
+  color: var(--white);
+}
+
+.contact-table > thead > tr:first-child > th > div > div > button > .not-visible-span > svg:last-child > path {
+  color: var(--teal);
 }

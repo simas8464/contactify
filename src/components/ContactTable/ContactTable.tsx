@@ -1,5 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { faEye, faEyeSlash, faList } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSquare,
+  faCheck,
+  faEye,
+  faEyeSlash,
+  faList,
+} from '@fortawesome/free-solid-svg-icons';
+import { faSquare as faRegularSquare } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { Contact, SortableContactProperty } from '../../types/contacts';
@@ -34,6 +41,7 @@ export default function ContactTable({
   const [showEmail, setShowEmail] = useState<boolean>(true);
   const [showPhone, setShowPhone] = useState<boolean>(true);
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showVisible, setShowVisible] = useState<boolean>(true);
   const menuIconRef = useRef<HTMLButtonElement>(null);
 
   function setSortingState(columnName: SortableContactProperty): void {
@@ -76,10 +84,23 @@ export default function ContactTable({
                   list='cities'
                 ></input>
                 <datalist id='cities'>
-                  {contacts.map(({ city }) => (
-                    <option value={city} />
+                  {contacts.map(({ city }, index) => (
+                    <option value={city} key={index} />
                   ))}
                 </datalist>
+                <button onClick={() => setShowVisible(!showVisible)}>
+                  {showVisible ? (
+                    <span className='fa-layers fa-fw visible-span'>
+                      <FontAwesomeIcon icon={faSquare} />
+                      <FontAwesomeIcon icon={faCheck} />
+                    </span>
+                  ) : (
+                    <span className='fa-layers fa-fw not-visible-span'>
+                      <FontAwesomeIcon icon={faSquare} />
+                      <FontAwesomeIcon icon={faRegularSquare} />
+                    </span>
+                  )}
+                </button>
               </div>
               <div>
                 <p>CONTACTIFY</p>
