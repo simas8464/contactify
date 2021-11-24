@@ -159,33 +159,41 @@
   width: 100%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:first-child {
+.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:first-child {
   height: 100%;
   width: 100%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:last-child {
+.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:last-child {
   height: 60%;
   width: 60%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:first-child > path {
+.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:first-child > path {
   color: var(--teal);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .visible-span > svg:last-child > path {
+.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:last-child > path {
   color: var(--white);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .not-visible-span > svg {
+.contact-table > thead > tr:first-child > th > div > div > button > .not-active-span > svg {
   height: 100%;
   width: 100%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .not-visible-span > svg:first-child > path {
+.contact-table > thead > tr:first-child > th > div > div > button > .not-active-span > svg:first-child > path {
   color: var(--white);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .not-visible-span > svg:last-child > path {
+.contact-table > thead > tr:first-child > th > div > div > button > .not-active-span > svg:last-child > path {
   color: var(--teal);
+}
+
+.contact-table > thead > tr:first-child > th > div > div > p {
+  color: var(--white);
+}
+
+.contact-table > thead > tr:first-child > th > div > div > svg > path {
+  color: var(--white);
 }

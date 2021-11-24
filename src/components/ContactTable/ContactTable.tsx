@@ -41,7 +41,9 @@ export default function ContactTable({
   const [showEmail, setShowEmail] = useState<boolean>(true);
   const [showPhone, setShowPhone] = useState<boolean>(true);
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [showVisible, setShowVisible] = useState<boolean>(true);
+  const [nameFilter, setNameFilter] = useState<string | null>(null);
+  const [cityFilter, setCityFilter] = useState<string | null>(null);
+  const [showActive, setShowActive] = useState<boolean>(true);
   const menuIconRef = useRef<HTMLButtonElement>(null);
 
   function setSortingState(columnName: SortableContactProperty): void {
@@ -50,6 +52,37 @@ export default function ContactTable({
     } else {
       setSortAscending(!sortAscending);
     }
+  }
+
+  function prepareContacts(): Contact[] {
+    let preparedContacts = contacts;
+    if (!showActive || nameFilter !== null || cityFilter !== null) {
+      const nameRegex =
+        nameFilter !== null ? new RegExp(nameFilter, 'i') : null;
+      const cityRegex =
+        cityFilter !== null ? new RegExp(cityFilter, 'i') : null;
+      preparedContacts = preparedContacts.filter(({ isActive, name, city }) => {
+        if (!showActive && isActive) {
+          return false;
+        }
+        if (nameRegex !== null && !nameRegex.test(name)) {
+          return false;
+        }
+        if (cityRegex !== null && !cityRegex.test(city)) {
+          return false;
+        }
+        return true;
+      });
+    }
+    if (sortColumn !== null) {
+      preparedContacts = preparedContacts.sort((a, b) => {
+        if (sortAscending) {
+          return a[sortColumn].localeCompare(b[sortColumn]);
+        }
+        return b[sortColumn].localeCompare(a[sortColumn]);
+      });
+    }
+    return preparedContacts;
   }
 
   let firstColumn: Columns;
@@ -77,30 +110,49 @@ export default function ContactTable({
           <th colSpan={columnNumber}>
             <div>
               <div>
-                <input type='text' placeholder={Columns.Name}></input>
+                <input
+                  type='text'
+                  placeholder={Columns.Name}
+                  onChange={({ target: { value } }) => {
+                    if (value) {
+                      setNameFilter(value);
+                    } else if (nameFilter !== null) {
+                      setNameFilter(null);
+                    }
+                  }}
+                ></input>
                 <input
                   type='text'
                   placeholder={Columns.City}
                   list='cities'
+                  onChange={({ target: { value } }) => {
+                    if (value) {
+                      setCityFilter(value);
+                    } else if (cityFilter !== null) {
+                      setCityFilter(null);
+                    }
+                  }}
                 ></input>
                 <datalist id='cities'>
                   {contacts.map(({ city }, index) => (
                     <option value={city} key={index} />
                   ))}
                 </datalist>
-                <button onClick={() => setShowVisible(!showVisible)}>
-                  {showVisible ? (
-                    <span className='fa-layers fa-fw visible-span'>
+                <button onClick={() => setShowActive(!showActive)}>
+                  {showActive ? (
+                    <span className='fa-layers fa-fw active-span'>
                       <FontAwesomeIcon icon={faSquare} />
                       <FontAwesomeIcon icon={faCheck} />
                     </span>
                   ) : (
-                    <span className='fa-layers fa-fw not-visible-span'>
+                    <span className='fa-layers fa-fw not-active-span'>
                       <FontAwesomeIcon icon={faSquare} />
                       <FontAwesomeIcon icon={faRegularSquare} />
                     </span>
                   )}
                 </button>
+                <p>Show active</p>
+                <FontAwesomeIcon icon={faEye} />
               </div>
               <div>
                 <p>CONTACTIFY</p>
@@ -210,15 +262,7 @@ export default function ContactTable({
         </tr>
       </thead>
       <tbody>
-        {(sortColumn !== null
-          ? contacts.sort((a, b) => {
-              if (sortAscending) {
-                return a[sortColumn].localeCompare(b[sortColumn]);
-              }
-              return b[sortColumn].localeCompare(a[sortColumn]);
-            })
-          : contacts
-        ).map((contact, index, { length }) => {
+        {prepareContacts().map((contact, index, { length }) => {
           const { id, name, city, isActive, email, phone } = contact;
           const onMouseClick = () => setSelectedContact(contact);
           const backgroundStyle =
