@@ -5,6 +5,8 @@ import {
   faEye,
   faEyeSlash,
   faList,
+  faArrowDown,
+  faArrowUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { faSquare as faRegularSquare } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,6 +54,7 @@ export default function ContactTable({
   function setSortingState(columnName: SortableContactProperty): void {
     if (sortColumn !== columnName) {
       setSortColumn(columnName);
+      setSortAscending(sortAscending);
     } else {
       setSortAscending(!sortAscending);
     }
@@ -188,7 +191,14 @@ export default function ContactTable({
             style={{ display: showName ? undefined : 'none' }}
           >
             <button onClick={() => setSortingState('name')}>
-              <p>{Columns.Name}</p>
+              <div>
+                <p>{Columns.Name}</p>
+                {sortColumn === 'name' && (
+                  <FontAwesomeIcon
+                    icon={sortAscending ? faArrowDown : faArrowUp}
+                  />
+                )}
+              </div>
             </button>
           </th>
           <th
@@ -200,7 +210,14 @@ export default function ContactTable({
             style={{ display: showCity ? undefined : 'none' }}
           >
             <button onClick={() => setSortingState('city')}>
-              <p>{Columns.City}</p>
+              <div>
+                <p>{Columns.City}</p>
+                {sortColumn === 'city' && (
+                  <FontAwesomeIcon
+                    icon={sortAscending ? faArrowDown : faArrowUp}
+                  />
+                )}
+              </div>
             </button>
           </th>
           <th
@@ -220,7 +237,14 @@ export default function ContactTable({
             style={{ display: showEmail ? undefined : 'none' }}
           >
             <button onClick={() => setSortingState('email')}>
-              <p>{Columns.Email}</p>
+              <div>
+                <p>{Columns.Email}</p>
+                {sortColumn === 'email' && (
+                  <FontAwesomeIcon
+                    icon={sortAscending ? faArrowDown : faArrowUp}
+                  />
+                )}
+              </div>
             </button>
           </th>
           <th
@@ -232,7 +256,14 @@ export default function ContactTable({
             style={{ display: showPhone ? undefined : 'none' }}
           >
             <button onClick={() => setSortingState('phone')}>
-              <p>{Columns.Phone}</p>
+              <div>
+                <p>{Columns.Phone}</p>
+                {sortColumn === 'phone' && (
+                  <FontAwesomeIcon
+                    icon={sortAscending ? faArrowDown : faArrowUp}
+                  />
+                )}
+              </div>
             </button>
           </th>
           <th className='contact-table-cell contact-table-header'>

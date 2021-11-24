@@ -32,7 +32,27 @@
   align-items: center;
 }
 
-.contact-table .contact-table-header > button > p {
+.contact-table .contact-table-header > button > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contact-table .last-column > button > div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contact-table .contact-table-header > button > div > p {
+  color: var(--white);
+}
+
+.contact-table .contact-table-header > button > div > svg {
+  margin-left: 1rem;
+}
+
+.contact-table .contact-table-header > button > div > svg > path {
   color: var(--white);
 }
 
@@ -64,11 +84,13 @@
   text-align: left;
 }
 
-.contact-table .first-column > button > p {
+.contact-table .first-column > button > p,
+.contact-table .first-column > button > div > p {
   text-indent: 1.5rem;
 }
 
-.contact-table .last-column > button > p {
+.contact-table .last-column > button > p,
+.contact-table .last-column > button > div > p {
   text-align: right;
 }
 
@@ -117,7 +139,13 @@
   border-radius: 0.5rem 0.5rem 0rem 0rem;
 }
 
-.contact-table > thead > tr:first-child > th > div > div:first-child > *:first-child {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div:first-child
+  > *:first-child {
   margin-left: 1rem;
 }
 
@@ -144,7 +172,13 @@
   color: var(--white);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > input::-webkit-calendar-picker-indicator {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > input::-webkit-calendar-picker-indicator {
   opacity: 100;
 }
 
@@ -177,34 +211,94 @@
   width: 100%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:first-child {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .active-span
+  > svg:first-child {
   height: 100%;
   width: 100%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:last-child {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .active-span
+  > svg:last-child {
   height: 60%;
   width: 60%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:first-child > path {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .active-span
+  > svg:first-child
+  > path {
   color: var(--teal);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .active-span > svg:last-child > path {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .active-span
+  > svg:last-child
+  > path {
   color: var(--white);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .not-active-span > svg {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .not-active-span
+  > svg {
   height: 100%;
   width: 100%;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .not-active-span > svg:first-child > path {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .not-active-span
+  > svg:first-child
+  > path {
   color: var(--white);
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button > .not-active-span > svg:last-child > path {
+.contact-table
+  > thead
+  > tr:first-child
+  > th
+  > div
+  > div
+  > button
+  > .not-active-span
+  > svg:last-child
+  > path {
   color: var(--teal);
 }
 
