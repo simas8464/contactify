@@ -148,10 +148,23 @@
   opacity: 100;
 }
 
-.contact-table > thead > tr:first-child > th > div > div > button {
+.contact-table .active-checkbox-button {
   background-color: transparent;
   height: 1.3rem;
   width: 1.3rem;
+}
+
+.contact-table .filter-button {
+  background-color: var(--teal);
+  height: 2.5rem;
+  width: 8.5rem;
+  overflow: hidden;
+  border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+  margin-left: 3rem;
+}
+
+.contact-table .filter-button > p {
+  color: var(--white);
 }
 
 .contact-table > thead > tr:first-child > th > div > div > button > span {

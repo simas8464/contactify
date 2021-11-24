@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   faSquare,
   faCheck,
@@ -44,6 +44,9 @@ export default function ContactTable({
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const [cityFilter, setCityFilter] = useState<string | null>(null);
   const [showActive, setShowActive] = useState<boolean>(true);
+  const [filteredContacts, setFilteredContacts] = useState<Contact[] | null>(
+    null
+  );
   const menuIconRef = useRef<HTMLButtonElement>(null);
 
   function setSortingState(columnName: SortableContactProperty): void {
@@ -138,7 +141,10 @@ export default function ContactTable({
                     <option value={city} key={index} />
                   ))}
                 </datalist>
-                <button onClick={() => setShowActive(!showActive)}>
+                <button
+                  className='active-checkbox-button'
+                  onClick={() => setShowActive(!showActive)}
+                >
                   {showActive ? (
                     <span className='fa-layers fa-fw active-span'>
                       <FontAwesomeIcon icon={faSquare} />
@@ -153,6 +159,9 @@ export default function ContactTable({
                 </button>
                 <p>Show active</p>
                 <FontAwesomeIcon icon={faEye} />
+                <button className='filter-button' onClick={() => setFilteredContacts(prepareContacts())}>
+                  <p>FILTER</p>
+                </button>
               </div>
               <div>
                 <p>CONTACTIFY</p>
@@ -262,99 +271,101 @@ export default function ContactTable({
         </tr>
       </thead>
       <tbody>
-        {prepareContacts().map((contact, index, { length }) => {
-          const { id, name, city, isActive, email, phone } = contact;
-          const onMouseClick = () => setSelectedContact(contact);
-          const backgroundStyle =
-            selectedContact?.id === id
-              ? { backgroundColor: 'var(--grey)' }
-              : undefined;
+        {(filteredContacts !== null ? filteredContacts : contacts).map(
+          (contact, index, { length }) => {
+            const { id, name, city, isActive, email, phone } = contact;
+            const onMouseClick = () => setSelectedContact(contact);
+            const backgroundStyle =
+              selectedContact?.id === id
+                ? { backgroundColor: 'var(--grey)' }
+                : undefined;
 
-          return (
-            <tr className='contact-table-row' id={id} key={id}>
-              <td
-                className={classNames(
-                  'contact-table-cell',
-                  'contact-table-data',
-                  { 'first-column': firstColumn === Columns.Name }
-                )}
-                style={{ display: showName ? undefined : 'none' }}
-              >
-                <button onClick={onMouseClick} style={backgroundStyle}>
-                  <p>{name}</p>
-                </button>
-              </td>
-              <td
-                className={classNames(
-                  'contact-table-cell',
-                  'contact-table-data',
-                  { 'first-column': firstColumn === Columns.City }
-                )}
-                style={{ display: showCity ? undefined : 'none' }}
-              >
-                <button onClick={onMouseClick} style={backgroundStyle}>
-                  <p>{city}</p>
-                </button>
-              </td>
-              <td
-                className={classNames(
-                  'contact-table-cell',
-                  'contact-table-data',
-                  {
-                    'first-column': firstColumn === Columns.Visible,
-                    'last-column': lastColumn === Columns.Visible,
-                  }
-                )}
-              >
-                <button onClick={onMouseClick} style={backgroundStyle}>
-                  <FontAwesomeIcon
-                    className='visible-icon'
-                    icon={isActive ? faEye : faEyeSlash}
-                  />
-                </button>
-              </td>
-              <td
-                className={classNames(
-                  'contact-table-cell',
-                  'contact-table-data',
-                  { 'last-column': lastColumn === Columns.Email }
-                )}
-                style={{ display: showEmail ? undefined : 'none' }}
-              >
-                <button onClick={onMouseClick} style={backgroundStyle}>
-                  <p>{email}</p>
-                </button>
-              </td>
-              <td
-                className={classNames(
-                  'contact-table-cell',
-                  'contact-table-data',
-                  { 'last-column': lastColumn === Columns.Phone }
-                )}
-                style={{ display: showPhone ? undefined : 'none' }}
-              >
-                <button onClick={onMouseClick} style={backgroundStyle}>
-                  <p>{phone}</p>
-                </button>
-              </td>
-              <td className='contact-table-cell contact-table-data'>
-                <button onClick={onMouseClick} style={backgroundStyle}>
-                  <div />
-                </button>
-              </td>
-              {index === 0 ? (
+            return (
+              <tr className='contact-table-row' id={id} key={id}>
                 <td
-                  className='contact-table-contact-details-row'
-                  rowSpan={length}
+                  className={classNames(
+                    'contact-table-cell',
+                    'contact-table-data',
+                    { 'first-column': firstColumn === Columns.Name }
+                  )}
+                  style={{ display: showName ? undefined : 'none' }}
                 >
-                  {selectedContact !== null ? (
-                    <ContactDetails selectedContact={selectedContact} />
-                  ) : null}
+                  <button onClick={onMouseClick} style={backgroundStyle}>
+                    <p>{name}</p>
+                  </button>
                 </td>
-              ) : null}
-            </tr>
-          );
-        })}
+                <td
+                  className={classNames(
+                    'contact-table-cell',
+                    'contact-table-data',
+                    { 'first-column': firstColumn === Columns.City }
+                  )}
+                  style={{ display: showCity ? undefined : 'none' }}
+                >
+                  <button onClick={onMouseClick} style={backgroundStyle}>
+                    <p>{city}</p>
+                  </button>
+                </td>
+                <td
+                  className={classNames(
+                    'contact-table-cell',
+                    'contact-table-data',
+                    {
+                      'first-column': firstColumn === Columns.Visible,
+                      'last-column': lastColumn === Columns.Visible,
+                    }
+                  )}
+                >
+                  <button onClick={onMouseClick} style={backgroundStyle}>
+                    <FontAwesomeIcon
+                      className='visible-icon'
+                      icon={isActive ? faEye : faEyeSlash}
+                    />
+                  </button>
+                </td>
+                <td
+                  className={classNames(
+                    'contact-table-cell',
+                    'contact-table-data',
+                    { 'last-column': lastColumn === Columns.Email }
+                  )}
+                  style={{ display: showEmail ? undefined : 'none' }}
+                >
+                  <button onClick={onMouseClick} style={backgroundStyle}>
+                    <p>{email}</p>
+                  </button>
+                </td>
+                <td
+                  className={classNames(
+                    'contact-table-cell',
+                    'contact-table-data',
+                    { 'last-column': lastColumn === Columns.Phone }
+                  )}
+                  style={{ display: showPhone ? undefined : 'none' }}
+                >
+                  <button onClick={onMouseClick} style={backgroundStyle}>
+                    <p>{phone}</p>
+                  </button>
+                </td>
+                <td className='contact-table-cell contact-table-data'>
+                  <button onClick={onMouseClick} style={backgroundStyle}>
+                    <div />
+                  </button>
+                </td>
+                {index === 0 ? (
+                  <td
+                    className='contact-table-contact-details-row'
+                    rowSpan={length}
+                  >
+                    {selectedContact !== null ? (
+                      <ContactDetails selectedContact={selectedContact} />
+                    ) : null}
+                  </td>
+                ) : null}
+              </tr>
+            );
+          }
+        )}
       </tbody>
     </table>
   );
