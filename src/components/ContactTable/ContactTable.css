@@ -84,7 +84,7 @@
   border-collapse: collapse;
   overflow: hidden;
   border-radius: 0rem 0rem 0.5rem 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.35);
 }
 
 .contact-table .menu-cell {
